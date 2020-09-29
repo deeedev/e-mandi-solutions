@@ -2,15 +2,9 @@ package model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Scanner;
 import java.util.Set;
 
 public class WholeSeller<E> {
@@ -26,6 +20,14 @@ public class WholeSeller<E> {
 	Map<String,WholeSeller> map = new LinkedHashMap<String,WholeSeller>();
 	//ArrayList<WholeSeller> list = new ArrayList<WholeSeller>();
 	 
+	public WholeSeller() {
+		super();
+		System.out.println("1. Add WholeSeller");
+		System.out.println("2. View WholeSeller List / By Liscense Number");
+		System.out.println("3. Remove WholeSeller By Liscense Number");
+		System.out.println("4. Exit\n");
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -33,6 +35,8 @@ public class WholeSeller<E> {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	
 
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -61,22 +65,16 @@ public class WholeSeller<E> {
 
 	public void add(WholeSeller wS2) throws IOException {
 		
-		// TODO Auto-generated method stub
-		//System.out.println("Enter Whole Seller Name: ");
-		//String name = sc.readLine();
-		//setName(name);
-		//System.out.println("Enter Wholer Seller Phone Number: ");
-		//String ph = sc.readLine();
-		//setPhoneNumber(ph);
-		//System.out.println("Enter Whole Seller Address: ");
-		//String add = sc.readLine();
-		//setAddress(add);
-		//System.out.println("Enter Whole Seller License number: ");
-		//String ln = sc.readLine();
-		//setLicenseNumber(ln);
+		System.out.println("Enter Whole Seller Name: ");
+		setName(sc.readLine());
+		System.out.println("Enter Wholer Seller Phone Number: ");
+		setPhoneNumber(sc.readLine());
+		System.out.println("Enter Whole Seller Address: ");
+		setAddress(sc.readLine());
+		System.out.println("Enter Whole Seller License number: \n");
+		setLicenseNumber(sc.readLine());
 		
-		//list.add(wS2);
-		
+		//Map to store the wholeSeller details
 		map.put(wS2.getLicenseNumber(), wS2);
 		
 		System.out.println("*** Details Updated***");

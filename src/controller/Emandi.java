@@ -15,6 +15,7 @@ public class Emandi {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		//Very initial content on the console
 		
 		System.out.println("<-------------------------------------------------->");
 		System.out.println("             Welcome to the e-mandi                 ");
@@ -26,7 +27,10 @@ public class Emandi {
 		System.out.println("5. WholeSeller Login");
 		System.out.println("6. Exit");
 		
+		//Logic to get the user input as per the above option and loop through it
+		
 		int n = sc.nextInt();
+		
 		while(n != 6) {
 			switch (n) {
 			case 1:
@@ -35,6 +39,8 @@ public class Emandi {
 				String user = sc.next();
 				System.out.println("Enter Password: ");
 				String pass = sc.next();
+				
+				//Calling ValidateUser class to check login
 				
 				boolean check = validate.checkUser(user,pass);
 				
