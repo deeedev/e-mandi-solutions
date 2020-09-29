@@ -7,27 +7,19 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class WholeSeller<E> {
-	
+public class WholeSeller {
+
 	String name;
 	String phoneNumber;
 	String address;
 	String licenseNumber;
-	
-	BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
+
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	WholeSeller WS;
-	
-	Map<String,WholeSeller> map = new LinkedHashMap<String,WholeSeller>();
-	//ArrayList<WholeSeller> list = new ArrayList<WholeSeller>();
-	 
-	public WholeSeller() {
-		super();
-		System.out.println("1. Add WholeSeller");
-		System.out.println("2. View WholeSeller List / By Liscense Number");
-		System.out.println("3. Remove WholeSeller By Liscense Number");
-		System.out.println("4. Exit\n");
-	}
-	
+
+	Map<String, WholeSeller> map = new LinkedHashMap<String, WholeSeller>();
+	// ArrayList<WholeSeller> list = new ArrayList<WholeSeller>();
+
 	public String getName() {
 		return name;
 	}
@@ -35,8 +27,6 @@ public class WholeSeller<E> {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	
 
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -62,52 +52,52 @@ public class WholeSeller<E> {
 		this.licenseNumber = licenseNumber;
 	}
 
-
 	public void add(WholeSeller wS2) throws IOException {
-		
+
 		System.out.println("Enter Whole Seller Name: ");
-		setName(sc.readLine());
+		setName(br.readLine());
 		System.out.println("Enter Wholer Seller Phone Number: ");
-		setPhoneNumber(sc.readLine());
+		setPhoneNumber(br.readLine());
 		System.out.println("Enter Whole Seller Address: ");
-		setAddress(sc.readLine());
+		setAddress(br.readLine());
 		System.out.println("Enter Whole Seller License number: \n");
-		setLicenseNumber(sc.readLine());
-		
-		//Map to store the wholeSeller details
+		setLicenseNumber(br.readLine());
+
+		// Map to store the wholeSeller details
 		map.put(wS2.getLicenseNumber(), wS2);
-		
+
 		System.out.println("*** Details Updated***");
-		
-		//for(Map.Entry<String, WholeSeller> entry:map.entrySet())
-		//{
-		//	System.out.println(entry.getKey() + " "+ entry.getValue().getName() +" : "+entry.getValue().getAddress() +" : "+ entry.getValue().getPhoneNumber());
-		//}
-		//System.out.println("Map Size :"+map.size());
-	}
-	
-	public void searchByLicenseNumber(String ln) {
-		// TODO Auto-generated method stub
-		WholeSeller ws = map.get(ln);
-		System.out.print("Name: "+ ws.getName()+ "\nPhone Number: "+ws.getPhoneNumber()+"\nAddress: "+ws.getAddress()+"\n");
-		
-		
-	}
-	
-	public void remove(String ln) {
-		// TODO Auto-generated method stub
-		map.remove(ln);
-		
+
+		// for(Map.Entry<String, WholeSeller> entry:map.entrySet())
+		// {
+		// System.out.println(entry.getKey() + " "+ entry.getValue().getName() +" :
+		// "+entry.getValue().getAddress() +" : "+ entry.getValue().getPhoneNumber());
+		// }
+		// System.out.println("Map Size :"+map.size());
 	}
 
 	public void viewList() {
 		// TODO Auto-generated method stub
+
 		Set<String> keys = map.keySet();
-		for(String key : keys) {
-			System.out.println("\nLicense Number: " +map.get(key).getLicenseNumber() + "\nName: "+map.get(key).getName() + "\nPhone Number: "+map.get(key).getPhoneNumber()+"\nAddress: "+map.get(key).getAddress());
-		}
+		for (String key : keys)
+			System.out.println("\nLicense Number: " + map.get(key).getLicenseNumber() + "\nName: "
+					+ map.get(key).getName() + "\nPhone Number: " + map.get(key).getPhoneNumber() + "\nAddress: "
+					+ map.get(key).getAddress());
 	}
 
-	
+	public void searchByLicenseNumber(String ln) {
+		// TODO Auto-generated method stub
+		WholeSeller ws = map.get(ln);
+		System.out.print("Name: " + ws.getName() + "\nPhone Number: " + ws.getPhoneNumber() + "\nAddress: "
+				+ ws.getAddress() + "\n");
+
+	}
+
+	public void remove(String ln) {
+		// TODO Auto-generated method stub
+		map.remove(ln);
+
+	}
 
 }
