@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import businesslogic.ValidateUser;
+import model.Farmer;
 
 public class Emandi {
 
@@ -12,14 +13,17 @@ public class Emandi {
 		// TODO Auto-generated method stub
 
 		Admin admin = new Admin();
+		Farmer farmer = new Farmer();
+
 		ValidateUser validate = new ValidateUser();
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		// Very initial content on the console
 
-		System.out.println("<-------------------------------------------------->");
-		System.out.println("             Welcome to the e-mandi                 ");
+		System.out.println("<------------------------------------------------------------------->");
+		System.out.println("               Welcome to the e-mandi service portal                 ");
+		System.out.println("<------------------------------------------------------------------->");
 		System.out.println("\n Enter your choices");
 		System.out.println("1. Admin Login");
 		System.out.println("2. Farmer Login");
@@ -30,33 +34,53 @@ public class Emandi {
 
 		// Logic to get the user input as per the above option and loop through it
 
+		// Console console = System.console();
+
 		int n = Integer.parseInt(br.readLine());
 
-		while (n != 6)
-			switch (n) {
-			case 1:
+		switch (n) {
 
-				System.out.println("\nEnter User Name: ");
-				String user = br.readLine();
-				System.out.println("Enter Password: ");
-				String pass = br.readLine();
+		case 1:
 
-				// Calling ValidateUser class to check login
+			System.out.println("Enter User Name: ");
+			String user = br.readLine();
+			System.out.println("Enter Password: ");
 
-				boolean check = validate.checkUser(user, pass);
+			String pass = br.readLine();
 
-				if (check) {
-					System.out.println("***Login Successful***");
-					admin.adminLogin();
+			// Calling ValidateUser class to check login
 
-				} else
-					System.out.println("Invalid Username or Password");
-				break;
+			boolean check = validate.checkUser(user, pass);
 
-			default:
-				System.out.println("Invalid Input");
-				break;
-			}
+			if (check) {
+				System.out.println("***Login Successful***\n");
+				admin.adminLogin();
+
+			} else
+				System.out.println("Invalid Username or Password");
+			break;
+
+		case 2:
+			System.out.println("Enter User Name: ");
+			String farmerUser = br.readLine();
+			System.out.println("Enter Password: ");
+
+			String farmerPassword = br.readLine();
+
+			boolean checkFarmerUser = validate.checkFarmerUser(farmerUser, farmerPassword);
+
+			if (checkFarmerUser) {
+				System.out.println("***Login Successful***\n");
+				farmer.farmerLogin();
+			} else
+				System.out.println("Invalid Username or Password");
+
+			break;
+
+		default:
+			System.out.println("Invalid Input");
+			break;
+		}
 
 	}
 

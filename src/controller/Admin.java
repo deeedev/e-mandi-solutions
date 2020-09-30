@@ -4,19 +4,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import dao.CRUDOperationsWholeSeller;
+import model.Farmer;
+import model.Retailer;
 import model.WholeSeller;
-
-/* once the User will select Admin Login it will be redirected here */
 
 public class Admin {
 
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-	WholeSeller WS = new WholeSeller();
-
-	// Admin login method, invoke after User Select Admin Login
+	CRUDOperationsWholeSeller WS = new CRUDOperationsWholeSeller();
+	Farmer fam = new Farmer();
+	Retailer retail = new Retailer();
 
 	public void adminLogin() throws IOException {
+
 		// TODO Auto-generated method stub
 		System.out.println("1. Add/Remove WholeSellers");
 		System.out.println("2. Add/Remove Farmers");
@@ -25,24 +26,32 @@ public class Admin {
 		System.out.println("5. Exit");
 
 		System.out.println("\nEnter your choices: ");
-
 		int ch = Integer.parseInt(br.readLine());
-		while (ch != 5)
-			// Switch Statement for the getting input for Main Admin Login List
-			switch (ch) {
-			case 1:
-				// WholeSeller constructor invoked.
+
+		switch (ch) {
+
+		case 1:
+
+			do {
 
 				new WholeSeller();
-				System.out.println("Enter your choices: ");
 				int c = Integer.parseInt(br.readLine());
-
-				// Switch Statement for the getting input for Sub List(i.e, Add WholeSeller)
 				switch (c) {
 
 				case 1:
-					// WholeSeller Add method invoked after Choice 1
-					WS.add(WS);
+
+					WholeSeller WS1 = new WholeSeller();
+
+					System.out.println("Enter Whole Seller Name: ");
+					WS1.setName(br.readLine());
+					System.out.println("Enter Wholer Seller Phone Number: ");
+					WS1.setPhoneNumber(br.readLine());
+					System.out.println("Enter Whole Seller Address: ");
+					WS1.setAddress(br.readLine());
+					System.out.println("Enter Whole Seller License number: ");
+					WS1.setLicenseNumber(br.readLine());
+
+					WS.add(WS1);
 
 					break;
 
@@ -53,54 +62,163 @@ public class Admin {
 
 					int n = Integer.parseInt(br.readLine());
 
-					// Switch to get input for sub options in choice 2
-
 					switch (n) {
 
-					// View WholeSeller List
 					case 1:
 
-						// WholeSeller View List method Invoked after choice 2 --> 1
 						WS.viewList();
 						break;
 
-					// Search by License Number
 					case 2:
-						System.out.println("Enter the License Number: ");
 
-						// WholeSeller searchByLicenseNumber method invoked after Choice 2 --> 2
+						System.out.println("Enter the License Number: ");
 						WS.searchByLicenseNumber(br.readLine());
 						break;
 
-					// Default for sub choice 2
 					default:
 						break;
 					}
+					break;
 
 				case 3:
-					System.out.println("Enter the License Number to remove WholeSeller: ");
 
-					// WholeSeller remove method invoked after choice 3
+					System.out.println("Enter the License Number: ");
 					WS.remove(br.readLine());
-
 					break;
 
 				case 4:
+					adminLogin();
+					break;
+				default:
+					System.out.println("Invalid Input");
+					break;
+				}
+			} while (ch == 1);
+			break;
+
+		case 2:
+
+			new Farmer();
+			int d = Integer.parseInt(br.readLine());
+
+			switch (d) {
+
+			case 1:
+				Farmer fam1 = new Farmer();
+
+				System.out.println("Enter Farmer Name: ");
+				fam1.setName(br.readLine());
+				System.out.println("Enter Farmer Phone Number: ");
+				fam1.setPhoneNumber(br.readLine());
+				System.out.println("Enter Farmer Address: ");
+				fam1.setAddress(br.readLine());
+				System.out.println("Enter Farmer License number: ");
+				fam1.setLicenseNumber(br.readLine());
+
+				fam.add(fam1);
+				break;
+
+			case 2:
+
+				System.out.println("1. View Farmer List");
+				System.out.println("2. Search By License Number\n");
+
+				int d1 = Integer.parseInt(br.readLine());
+
+				switch (d1) {
+
+				case 1:
+
+					fam.viewList();
+					break;
+
+				case 2:
+
+					System.out.println("Enter License Number: ");
+					fam.searchByLicenseNumber(br.readLine());
+					break;
+
+				default:
+					break;
+
+				}
+				break;
+
+			case 3:
+
+				System.out.println("Enter License Number: ");
+				fam.remove(br.readLine());
+				break;
+
+			default:
+				break;
+			}
+
+			break;
+
+		case 3:
+
+			new Retailer();
+			int e = Integer.parseInt(br.readLine());
+
+			switch (e) {
+
+			case 1:
+
+				Retailer retail1 = new Retailer();
+
+				System.out.println("Enter Whole Seller Name: ");
+				retail1.setName(br.readLine());
+				System.out.println("Enter Wholer Seller Phone Number: ");
+				retail1.setPhoneNumber(br.readLine());
+				System.out.println("Enter Whole Seller Address: ");
+				retail1.setAddress(br.readLine());
+				System.out.println("Enter Whole Seller License number: ");
+				retail1.setLicenseNumber(br.readLine());
+
+				retail.add(retail1);
+
+				break;
+
+			case 2:
+
+				System.out.println("1. View Whole Seller List");
+				System.out.println("2. Search By License Number\n");
+
+				int n = Integer.parseInt(br.readLine());
+				switch (n) {
+
+				case 1:
+
+					retail.viewList();
+					break;
+
+				case 2:
+
+					System.out.println("Enter the License Number: ");
+					retail.searchByLicenseNumber(br.readLine());
 					break;
 
 				default:
 					break;
 				}
+				break;
+			case 3:
 
-			case 2:
-
+				System.out.println("Enter the License Number: ");
+				retail.remove(br.readLine());
+				break;
+			case 4:
 				break;
 
 			default:
 				break;
-
 			}
+			break;
+
+		default:
+			break;
+		}
 
 	}
-
 }
