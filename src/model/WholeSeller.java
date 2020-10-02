@@ -41,11 +41,13 @@ public class WholeSeller {
 
 	public WholeSeller() {
 
-		System.out.println("\n1. Add WholeSeller");
-		System.out.println("2. View WholeSeller List / By Liscense Number");
-		System.out.println("3. Remove WholeSeller By Liscense Number");
-		System.out.println("4. Exit\n");
-		System.out.println("Enter your choices: ");
+	}
+
+	public void WholeSellerLogin() {
+		// TODO Auto-generated method stub
+
+		System.out.println("Reached WS");
+
 	}
 
 }

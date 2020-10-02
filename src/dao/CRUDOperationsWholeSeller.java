@@ -1,15 +1,23 @@
 package dao;
 
 import java.io.IOException;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import model.WholeSeller;
 
 public class CRUDOperationsWholeSeller {
 
-	static Map<String, WholeSeller> mapWholeSeller = new LinkedHashMap<String, WholeSeller>();
+	public static Map<String, WholeSeller> getMapWholeSeller() {
+		return mapWholeSeller;
+	}
+
+	public static void setMapWholeSeller(Map<String, WholeSeller> mapWholeSeller) {
+		CRUDOperationsWholeSeller.mapWholeSeller = mapWholeSeller;
+	}
+
+	static Map<String, WholeSeller> mapWholeSeller = new TreeMap<String, WholeSeller>();
 
 	public void add(WholeSeller wS2) throws IOException {
 

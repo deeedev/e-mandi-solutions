@@ -1,10 +1,8 @@
 package businesslogic;
 
-import model.Farmer;
+import dao.CRUDOperationsWholeSeller;
 
 public class ValidateUser {
-
-	Farmer farmer = new Farmer();
 
 	public boolean checkUser(String user, String pass) {
 
@@ -21,5 +19,21 @@ public class ValidateUser {
 			return true;
 		else
 			return false;
+	}
+
+	public boolean checkWholeSellerUser(String wsUser, String wsPass) {
+		// TODO Auto-generated method stub
+		boolean check = false;
+		for (String key : CRUDOperationsWholeSeller.getMapWholeSeller().keySet()) {
+			String name = CRUDOperationsWholeSeller.getMapWholeSeller().get(key).getName();
+
+			if (wsUser.equals(name) && wsPass.equals(name))
+				check = true;
+			else
+				check = false;
+		}
+
+		return check;
+
 	}
 }
