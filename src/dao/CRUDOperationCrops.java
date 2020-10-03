@@ -6,27 +6,27 @@ import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.TreeMap;
 
-import utility.Crops;
+import model.Crops;
 
 public class CRUDOperationCrops {
 
-	Map<String, Double> mapCropsPrice = new TreeMap<String, Double>();
-	Map<String, Crops> mapCropsMSP = new TreeMap<String, Crops>();
+	public static Map<String, Double> mapCropsPrice = new TreeMap<String, Double>();
+	public static Map<String, Crops> mapCropsMSP = new TreeMap<String, Crops>();
 
-	public Map<String, Double> getMapCropsPrice() {
+	public static Map<String, Double> getMapCropsPrice() {
 		return mapCropsPrice;
 	}
 
-	public void setMapCropsPrice(Map<String, Double> mapCropsPrice) {
-		this.mapCropsPrice = mapCropsPrice;
+	public static void setMapCropsPrice(Map<String, Double> mapCropsPrice) {
+		CRUDOperationCrops.mapCropsPrice = mapCropsPrice;
 	}
 
-	public Map<String, Crops> getMapCropsMSP() {
+	public static Map<String, Crops> getMapCropsMSP() {
 		return mapCropsMSP;
 	}
 
-	public void setMapCropsMSP(Map<String, Crops> mapCropsMSP) {
-		this.mapCropsMSP = mapCropsMSP;
+	public static void setMapCropsMSP(Map<String, Crops> mapCropsMSP) {
+		CRUDOperationCrops.mapCropsMSP = mapCropsMSP;
 	}
 
 	Crops c = new Crops();
@@ -36,15 +36,20 @@ public class CRUDOperationCrops {
 	public void setMinimumSupportPrice() throws IOException {
 		// TODO Auto-generated method stub
 
-		for (String name : c.getCropsList()) {
+		for (int i = 0; i < c.getCropsList().length; i++) {
+			String arr[] = c.getCropsList();
 			Crops c1 = new Crops();
-			c1.setName(name);
+			c1.setName(arr[i]);
 
-			System.out.printf("Please Enter Minimum Support Price for %s", name);
+			System.out.printf("Please Enter Minimum Support Price for %s: \n", arr[i]);
 			c1.setMsp(br.readLine());
 
-			mapCropsMSP.put(name, c1);
+			mapCropsMSP.put(arr[i], c1);
 		}
+
+		for (String key : mapCropsMSP.keySet())
+			System.out.println(key + ":" + mapCropsMSP.get(key).getMsp());
+		System.out.println(mapCropsMSP.size());
 
 		System.out.println("******* Minimum Support Price Updated *******\n");
 	}

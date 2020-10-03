@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import utility.Stock;
-import utility.Crops;
-
 public class Farmer extends Crops {
 
 	String name;
@@ -15,8 +12,6 @@ public class Farmer extends Crops {
 	String licenseNumber;
 
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-	Stock stock = new Stock();
 
 	public Farmer() {
 
@@ -27,10 +22,12 @@ public class Farmer extends Crops {
 		System.out.println("Enter your choices: ");
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -75,14 +72,6 @@ public class Farmer extends Crops {
 		switch (choice) {
 		case 1:
 			System.out.println("Select Crops from the below list\n");
-			int j = 1;
-
-			for (int i = 0; i < stock.getCropsList().length; i++) {
-
-				String cropsList[] = stock.getCropsList();
-				System.out.println(+j + ": " + cropsList[i]);
-				j++;
-			}
 
 			System.out.println("\nEnter your choice: ");
 			int c = Integer.parseInt(br.readLine());

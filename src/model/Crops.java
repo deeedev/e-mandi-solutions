@@ -1,11 +1,11 @@
-package utility;
+package model;
 
 public class Crops {
 
 	String name;
-	String price;
+	double price;
 	String msp;
-	String quantity;
+	double quantity;
 
 	String[] cropsList = { "Wheat", "Rice", "Pulses", "Cotton", "Potato", "Tomato", "SugarCane", "Coconut", "Onion",
 			"Orange", "Apple" };
@@ -18,11 +18,11 @@ public class Crops {
 		this.cropsList = cropsList;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -42,11 +42,11 @@ public class Crops {
 		this.name = name;
 	}
 
-	public String getQuantity() {
+	public double getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(double quantity) {
 		this.quantity = quantity;
 	}
 

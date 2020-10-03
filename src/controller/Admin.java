@@ -6,31 +6,31 @@ import java.io.InputStreamReader;
 
 import dao.CRUDOperationCrops;
 import dao.CRUDOperationsFarmer;
-import dao.CRUDOperationsRetailer;
 import dao.CRUDOperationsWholeSeller;
 import model.Farmer;
-import model.Retailer;
 import model.WholeSeller;
+import utility.License;
 
-public class Admin {
+public class Admin implements License {
 
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	CRUDOperationsWholeSeller WS = new CRUDOperationsWholeSeller();
 	CRUDOperationsFarmer fam = new CRUDOperationsFarmer();
-	CRUDOperationsRetailer retail = new CRUDOperationsRetailer();
+
 	CRUDOperationCrops crops = new CRUDOperationCrops();
 
 	public void adminLogin() throws IOException {
 
 		// TODO Auto-generated method stub
 		int c1;
+
 		do {
 
 			System.out.println("1. Add/Remove WholeSellers");
 			System.out.println("2. Add/Remove Farmers");
-			System.out.println("3. Add/Remove Retailers");
-			System.out.println("4. Set Minimum Support Price");
+			System.out.println("3. Set Minimum Support Price");
+			System.out.println("4. Approve License Renewals");
 			System.out.println("5. Exit");
 			System.out.println("\nEnter your choices: ");
 
@@ -103,8 +103,8 @@ public class Admin {
 						break;
 
 					case 4:
-						adminLogin();
 						break;
+
 					default:
 						System.out.println("Invalid Input");
 						break;
@@ -170,7 +170,6 @@ public class Admin {
 					break;
 
 				case 4:
-					adminLogin();
 					break;
 
 				default:
@@ -181,75 +180,57 @@ public class Admin {
 				break;
 
 			// Admin choice 3 starts here *******8
+
 			case 3:
+				crops.setMinimumSupportPrice();
+				break;
 
-				new Retailer();
-				int e = Integer.parseInt(br.readLine());
+			case 4:
 
-				switch (e) {
+				System.out.println("1. Check For WholeSeller License");
+				System.out.println("2. Check For Farmer License");
+				System.out.println("3. Exit");
+				System.out.println("Enter your choice: \n");
+
+				int choice = Integer.parseInt(br.readLine());
+
+				switch (choice) {
 
 				case 1:
-
-					Retailer retail1 = new Retailer();
-
-					System.out.println("Enter Whole Seller Name: ");
-					retail1.setName(br.readLine());
-					System.out.println("Enter Wholer Seller Phone Number: ");
-					retail1.setPhoneNumber(br.readLine());
-					System.out.println("Enter Whole Seller Address: ");
-					retail1.setAddress(br.readLine());
-					System.out.println("Enter Whole Seller License number: ");
-					retail1.setLicenseNumber(br.readLine());
-
-					retail.add(retail1);
-
+					if (licenseRenewalWholeSeller.size() != 0) {
+						int j = 1;
+						for (String key : licenseRenewalWholeSeller.keySet()) {
+							WholeSeller ws = licenseRenewalWholeSeller.get(key);
+							System.out.println(j + ". " + "Name: " + ws.getName() + "\n " + "Phone: "
+									+ ws.getPhoneNumber() + "\n " + "License Number: " + ws.getLicenseNumber());
+							j++;
+						}
+					} else
+						System.out.println("***** No License Renewal Request *****\n");
 					break;
 
 				case 2:
-
-					System.out.println("1. View Whole Seller List");
-					System.out.println("2. Search By License Number\n");
-
-					int n = Integer.parseInt(br.readLine());
-					switch (n) {
-
-					case 1:
-
-						retail.viewList();
-						break;
-
-					case 2:
-
-						System.out.println("Enter the License Number: ");
-						retail.searchByLicenseNumber(br.readLine());
-						break;
-
-					default:
-						System.out.println("Invalid Input");
-						break;
-					}
+					if (licenseRenewalFarmer.size() != 0) {
+						int j = 1;
+						for (String key : licenseRenewalFarmer.keySet()) {
+							Farmer ws = licenseRenewalFarmer.get(key);
+							System.out.println(j + ". " + "Name: " + ws.getName() + "\n " + "Phone: "
+									+ ws.getPhoneNumber() + "\n " + "License Number: " + ws.getLicenseNumber());
+							j++;
+						}
+					} else
+						System.out.println("***** No License Renewal Request *****\n");
 					break;
+
 				case 3:
-
-					System.out.println("Enter the License Number: ");
-					retail.remove(br.readLine());
-					break;
-				case 4:
-					adminLogin();
 					break;
 
 				default:
 					System.out.println("Invalid Input");
 					break;
 				}
+
 				break;
-
-			// Admin Choice 4 Starts here **********
-
-			case 4:
-				crops.setMinimumSupportPrice();
-				break;
-
 			case 5:
 				System.out.println("\n**** You have a great day ****\n");
 				break;
@@ -259,5 +240,11 @@ public class Admin {
 				break;
 			}
 		} while (c1 != 5);
+	}
+
+	@Override
+	public void licenseRenewal() {
+		// TODO Auto-generated method stub
+
 	}
 }
