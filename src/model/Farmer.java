@@ -13,6 +13,8 @@ public class Farmer extends Crops {
 
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+	Crops crop = new Crops();
+
 	public Farmer() {
 
 		System.out.println("\n1. Add Farmer");
@@ -58,19 +60,21 @@ public class Farmer extends Crops {
 
 	public void farmerLogin() throws NumberFormatException, IOException {
 		// TODO Auto-generated method stub
+
 		System.out.println("<--------------------------------------------------->");
 		System.out.println("<         Welcome to the Farmer Portal               ");
 		System.out.println("<--------------------------------------------------->");
 
 		System.out.println("1. Sell Corps");
 		System.out.println("2. Know Minimum Support Price");
-		System.out.println("3. Register a compaint");
+		System.out.println("3. FeedBack/Complaint");
 		System.out.println("4. Know your previous transcations");
 
 		int choice = Integer.parseInt(br.readLine());
 
 		switch (choice) {
 		case 1:
+
 			System.out.println("Select Crops from the below list\n");
 
 			System.out.println("\nEnter your choice: ");

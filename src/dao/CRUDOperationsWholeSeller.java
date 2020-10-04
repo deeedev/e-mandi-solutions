@@ -107,7 +107,7 @@ public class CRUDOperationsWholeSeller implements Trade, License {
 
 			System.out.println("***** Buy Order Sent To Dashboard Successfully *****");
 
-			System.out.println("\nCrop Name: " + arr[c1 - 1] + "\nBuy Price: " + bp + "\n Quantity: " + quantity);
+			System.out.println("\nCrop Name: " + arr[c1 - 1] + "\nBuy Price: " + bp + "\nQuantity: " + quantity + "\n");
 
 			Crops crp = new Crops();
 
@@ -120,7 +120,6 @@ public class CRUDOperationsWholeSeller implements Trade, License {
 			break;
 
 		case 2:
-			System.out.println("reaching sell order");
 			if (sellOrderFarmer.size() != 0) {
 				int i = 1;
 				for (String key : sellOrderFarmer.keySet())

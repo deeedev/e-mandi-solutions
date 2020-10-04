@@ -7,8 +7,10 @@ import java.util.Scanner;
 
 import dao.CRUDOperationCrops;
 import dao.CRUDOperationsWholeSeller;
+import utility.FeedBack;
+import utility.License;
 
-public class WholeSeller {
+public class WholeSeller extends FeedBack {
 
 	String name;
 	String phoneNumber;
@@ -22,10 +24,12 @@ public class WholeSeller {
 
 	Crops crop = new Crops();
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -46,10 +50,12 @@ public class WholeSeller {
 		this.address = address;
 	}
 
+	@Override
 	public String getLicenseNumber() {
 		return licenseNumber;
 	}
 
+	@Override
 	public void setLicenseNumber(String licenseNumber) {
 		this.licenseNumber = licenseNumber;
 	}
@@ -63,7 +69,7 @@ public class WholeSeller {
 			System.out.println("1. Set Price");
 			System.out.println("2. Buy");
 			System.out.println("3. Sell");
-			System.out.println("4. Apply for License Renewal");
+			System.out.println("4. Apply for License Renewal/Status");
 			System.out.println("5. FeedBack/Complaint");
 			System.out.println("6. Exit");
 
@@ -81,7 +87,7 @@ public class WholeSeller {
 					CRUDOperationCrops.getMapCropsPrice().put(key, price);
 				}
 
-				System.out.println("***** Price Successfully updated *****");
+				System.out.println("***** Price Successfully updated *****\n");
 				break;
 			case 2:
 				ws.Buy();
@@ -92,9 +98,59 @@ public class WholeSeller {
 				break;
 
 			case 4:
-				ws.licenseRenewal();
+
+				System.out.println("1. Apply for License Renew");
+				System.out.println("2. Check Status");
+				System.out.println("Enter your choice: ");
+
+				int choi = Integer.parseInt(br.readLine());
+
+				switch (choi) {
+				case 1:
+					ws.licenseRenewal();
+					System.out.println("*** Request has been sent ***\n");
+					break;
+
+				case 2:
+					System.out.println("Enter your License Number: ");
+					String ln = br.readLine();
+
+					if (CRUDOperationsWholeSeller.getMapWholeSeller().containsKey(ln))
+						System.out.println("License Renewal Status: " + License.licenseRenewalstatus.get(ln));
+					else
+						System.out.println("License number is not registered!!");
+
+				default:
+					break;
+				}
+
 				break;
+
+			case 5:
+				System.out.println("1.Feedback");
+				System.out.println("2.Complaint");
+				System.out.println("Enter your choice: ");
+
+				int choice = sc.nextInt();
+
+				switch (choice) {
+				case 1:
+					fillFeedback();
+					System.out.println("**** Thanks for your valuable feedback ****\n");
+					break;
+
+				case 2:
+					fillComplaint();
+					System.out.println("**** I am sorry for any inconvenience caused to you ****\n");
+					break;
+
+				default:
+					// System.out.println("Invalid Input");
+					break;
+				}
+
 			default:
+				// System.out.println("Invalid Input");
 				break;
 			}
 

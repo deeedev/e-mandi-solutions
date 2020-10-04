@@ -17,6 +17,14 @@ public class CRUDOperationsFarmer {
 
 	}
 
+	public static Map<String, Farmer> getMapFarmer() {
+		return mapFarmer;
+	}
+
+	public static void setMapFarmer(Map<String, Farmer> mapFarmer) {
+		CRUDOperationsFarmer.mapFarmer = mapFarmer;
+	}
+
 	public void viewList() {
 		// TODO Auto-generated method stub
 		Set<String> keys = mapFarmer.keySet();

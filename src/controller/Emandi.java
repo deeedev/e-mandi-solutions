@@ -11,24 +11,6 @@ import model.WholeSeller;
 
 public class Emandi {
 
-	/*
-	 * private static void main() { // TODO Auto-generated method stub
-	 * System.out.println(
-	 * "<------------------------------------------------------------------->");
-	 * System.out.
-	 * println("               Welcome to the e-mandi service portal                 "
-	 * ); System.out.println(
-	 * "<------------------------------------------------------------------->");
-	 *
-	 * System.out.println("1. Admin Login");
-	 * System.out.println("2. WholeSeller Login");
-	 * System.out.println("3. Farmer Login");
-	 * System.out.println("4. Retailer Login"); System.out.println("5. Exit");
-	 * System.out.println("\n Enter your choices");
-	 *
-	 * }
-	 */
-
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
@@ -53,7 +35,7 @@ public class Emandi {
 			System.out.println("2. WholeSeller Login");
 			System.out.println("3. Farmer Login");
 			System.out.println("4. Exit");
-			System.out.println("\n Enter your choices");
+			System.out.println("\nEnter your choices");
 
 			int n = Integer.parseInt(br.readLine());
 			n1 = n;

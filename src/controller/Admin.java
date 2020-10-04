@@ -3,15 +3,17 @@ package controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import dao.CRUDOperationCrops;
 import dao.CRUDOperationsFarmer;
 import dao.CRUDOperationsWholeSeller;
 import model.Farmer;
 import model.WholeSeller;
+import utility.FeedBack;
 import utility.License;
 
-public class Admin implements License {
+public class Admin extends FeedBack implements License {
 
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -31,7 +33,8 @@ public class Admin implements License {
 			System.out.println("2. Add/Remove Farmers");
 			System.out.println("3. Set Minimum Support Price");
 			System.out.println("4. Approve License Renewals");
-			System.out.println("5. Exit");
+			System.out.println("5. View FeedBack or Complaint");
+			System.out.println("6. Exit");
 			System.out.println("\nEnter your choices: ");
 
 			int ch = Integer.parseInt(br.readLine());
@@ -189,7 +192,6 @@ public class Admin implements License {
 
 				System.out.println("1. Check For WholeSeller License");
 				System.out.println("2. Check For Farmer License");
-				System.out.println("3. Exit");
 				System.out.println("Enter your choice: \n");
 
 				int choice = Integer.parseInt(br.readLine());
@@ -201,10 +203,21 @@ public class Admin implements License {
 						int j = 1;
 						for (String key : licenseRenewalWholeSeller.keySet()) {
 							WholeSeller ws = licenseRenewalWholeSeller.get(key);
-							System.out.println(j + ". " + "Name: " + ws.getName() + "\n " + "Phone: "
-									+ ws.getPhoneNumber() + "\n " + "License Number: " + ws.getLicenseNumber());
+							System.out.println(j + ". " + "Name: " + ws.getName() + "\n   " + "Phone: "
+									+ ws.getPhoneNumber() + "\n   " + "License Number: " + ws.getLicenseNumber());
 							j++;
+
+							System.out.println("Do you want to Approve or Reject the application?");
+							System.out.println("Please Enter YES/NO");
+
+							String aprv = br.readLine();
+
+							if (aprv == "YES")
+								licenseRenewalstatus.put(key, "Approved");
+							else
+								licenseRenewalstatus.put(key, "Not Approved");
 						}
+
 					} else
 						System.out.println("***** No License Renewal Request *****\n");
 					break;
@@ -217,6 +230,16 @@ public class Admin implements License {
 							System.out.println(j + ". " + "Name: " + ws.getName() + "\n " + "Phone: "
 									+ ws.getPhoneNumber() + "\n " + "License Number: " + ws.getLicenseNumber());
 							j++;
+
+							System.out.println("Do you want to Approve or Reject the application?");
+							System.out.println("Please Enter YES/NO");
+
+							String aprv = br.readLine();
+
+							if (aprv == "YES")
+								licenseRenewalstatus.put(key, "Approved");
+							else
+								licenseRenewalstatus.put(key, "Not Approved");
 						}
 					} else
 						System.out.println("***** No License Renewal Request *****\n");
@@ -231,7 +254,58 @@ public class Admin implements License {
 				}
 
 				break;
+
 			case 5:
+				System.out.println("1. View Feedback");
+				System.out.println("2. View Complaint");
+				System.out.println("Enter your choice: ");
+
+				int c = Integer.parseInt(br.readLine());
+				switch (c) {
+				case 1:
+
+					if (feedback.size() != 0)
+						for (String key : feedback.keySet()) {
+
+							ArrayList<String> fb = feedback.get(key);
+
+							System.out.println("Type: " + fb.get(0));
+							System.out.println("Name: " + fb.get(1));
+							System.out.println("Phone: " + fb.get(2));
+							System.out.println("License Number: " + fb.get(3));
+							System.out.println("Message: " + fb.get(4));
+
+						}
+					else
+						System.out.println("\n***** No FeedBack Received *****\n");
+
+					break;
+
+				case 2:
+
+					if (complaint.size() != 0)
+						for (String key : complaint.keySet()) {
+
+							ArrayList<String> cp = complaint.get(key);
+
+							System.out.println("Type: " + cp.get(0));
+							System.out.println("Name: " + cp.get(1));
+							System.out.println("Phone: " + cp.get(2));
+							System.out.println("License Number: " + cp.get(3));
+							System.out.println("Message: " + cp.get(4));
+
+						}
+					else
+						System.out.println("\n***** No Complaint Received *****\n");
+					break;
+
+				default:
+					System.out.println("Invalid Input");
+					break;
+				}
+				break;
+
+			case 6:
 				System.out.println("\n**** You have a great day ****\n");
 				break;
 
@@ -239,7 +313,7 @@ public class Admin implements License {
 				System.out.println("Invalid Input");
 				break;
 			}
-		} while (c1 != 5);
+		} while (c1 != 6);
 	}
 
 	@Override
