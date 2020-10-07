@@ -73,7 +73,7 @@ public class WholeSeller extends FeedBack {
 			System.out.println("5. FeedBack/Complaint");
 			System.out.println("6. Exit");
 
-			System.out.println("Enter your choice");
+			System.out.println("\nEnter your choice");
 			int ch = Integer.parseInt(br.readLine());
 			c = ch;
 
@@ -87,7 +87,7 @@ public class WholeSeller extends FeedBack {
 					CRUDOperationCrops.getMapCropsPrice().put(key, price);
 				}
 
-				System.out.println("***** Price Successfully updated *****\n");
+				System.out.println("\n***** Price Successfully updated *****\n");
 				break;
 			case 2:
 				ws.Buy();
@@ -108,7 +108,7 @@ public class WholeSeller extends FeedBack {
 				switch (choi) {
 				case 1:
 					ws.licenseRenewal();
-					System.out.println("*** Request has been sent ***\n");
+					System.out.println("\n*** Request has been sent ***\n");
 					break;
 
 				case 2:
@@ -136,12 +136,12 @@ public class WholeSeller extends FeedBack {
 				switch (choice) {
 				case 1:
 					fillFeedback();
-					System.out.println("**** Thanks for your valuable feedback ****\n");
+					System.out.println("\n**** Thanks for your valuable feedback ****\n");
 					break;
 
 				case 2:
 					fillComplaint();
-					System.out.println("**** I am sorry for any inconvenience caused to you ****\n");
+					System.out.println("\n**** I am sorry for any inconvenience caused to you ****\n");
 					break;
 
 				default:

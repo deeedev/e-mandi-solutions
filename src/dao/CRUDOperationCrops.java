@@ -48,10 +48,10 @@ public class CRUDOperationCrops {
 		}
 
 		for (String key : mapCropsMSP.keySet())
-			System.out.println(key + ":" + mapCropsMSP.get(key).getMsp());
-		System.out.println(mapCropsMSP.size());
 
-		System.out.println("******* Minimum Support Price Updated *******\n");
+			System.out.println(key + "  :  " + mapCropsMSP.get(key).getMsp());
+
+		System.out.println("\n******* Minimum Support Price Updated *******\n");
 	}
 
 }

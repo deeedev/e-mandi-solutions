@@ -119,7 +119,12 @@ public class Admin extends FeedBack implements License {
 			// ADminLogin case 2 Started********
 			case 2:
 
-				new Farmer();
+				System.out.println("1. Add Farmer");
+				System.out.println("2. View Farmer List / By Liscense Number");
+				System.out.println("3. Remove Farmer By Liscense Number");
+				System.out.println("4. Exit\n");
+				System.out.println("Enter your choices: ");
+
 				int d = Integer.parseInt(br.readLine());
 
 				switch (d) {
@@ -207,7 +212,7 @@ public class Admin extends FeedBack implements License {
 									+ ws.getPhoneNumber() + "\n   " + "License Number: " + ws.getLicenseNumber());
 							j++;
 
-							System.out.println("Do you want to Approve or Reject the application?");
+							System.out.println("\nDo you want to Approve or Reject the application?");
 							System.out.println("Please Enter YES/NO");
 
 							String aprv = br.readLine();
@@ -219,7 +224,7 @@ public class Admin extends FeedBack implements License {
 						}
 
 					} else
-						System.out.println("***** No License Renewal Request *****\n");
+						System.out.println("\n***** No License Renewal Request *****\n");
 					break;
 
 				case 2:
@@ -231,7 +236,7 @@ public class Admin extends FeedBack implements License {
 									+ ws.getPhoneNumber() + "\n " + "License Number: " + ws.getLicenseNumber());
 							j++;
 
-							System.out.println("Do you want to Approve or Reject the application?");
+							System.out.println("\nDo you want to Approve or Reject the application?");
 							System.out.println("Please Enter YES/NO");
 
 							String aprv = br.readLine();
@@ -242,7 +247,7 @@ public class Admin extends FeedBack implements License {
 								licenseRenewalstatus.put(key, "Not Approved");
 						}
 					} else
-						System.out.println("***** No License Renewal Request *****\n");
+						System.out.println("\n***** No License Renewal Request *****\n");
 					break;
 
 				case 3:

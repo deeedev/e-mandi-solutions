@@ -21,7 +21,7 @@ public class CRUDOperationsFarmer extends FeedBack implements License, Trade {
 	public void add(Farmer fam1) {
 		// TODO Auto-generated method stub
 		mapFarmer.put(fam1.getLicenseNumber(), fam1);
-		System.out.println("*** Details Updated***\n");
+		System.out.println("\n*** Details Updated***\n");
 
 	}
 

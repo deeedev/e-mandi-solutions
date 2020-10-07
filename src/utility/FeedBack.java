@@ -108,12 +108,6 @@ public abstract class FeedBack {
 		System.out.println("Please Enter your message: ");
 		listComplaint.add(br.readLine());
 
-		ArrayList<String> listComplaint = new ArrayList<String>();
-
-		listComplaint.add(phone);
-		listComplaint.add(licenseNumber);
-		listComplaint.add(message);
-
-		complaint.put(licenseNumber, listComplaint);
+		complaint.put(listComplaint.get(3), listComplaint);
 	}
 }

@@ -1,5 +1,8 @@
 package businesslogic;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import dao.CRUDOperationsFarmer;
 import dao.CRUDOperationsWholeSeller;
 
@@ -42,6 +45,35 @@ public class ValidateUser {
 		}
 
 		return check;
+
+	}
+
+	private boolean validPassword(String password) {
+
+		boolean isValid = false;
+
+		String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,20}$";
+		Pattern p = Pattern.compile(regex);
+
+		Matcher m1 = p.matcher(password);
+
+		if (m1.matches())
+			isValid = true;
+
+		return isValid;
+	}
+
+	private boolean validEmail(String email) {
+		boolean isValid = false;
+
+		String regex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(email);
+
+		if (m.matches())
+			isValid = true;
+
+		return isValid;
 
 	}
 }

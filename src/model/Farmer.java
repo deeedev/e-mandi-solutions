@@ -24,11 +24,6 @@ public class Farmer extends FeedBack {
 
 	public Farmer() {
 
-		System.out.println("\n1. Add Farmer");
-		System.out.println("2. View Farmer List / By Liscense Number");
-		System.out.println("3. Remove Farmer By Liscense Number");
-		System.out.println("4. Exit\n");
-		System.out.println("Enter your choices: ");
 	}
 
 	@Override
@@ -81,8 +76,7 @@ public class Farmer extends FeedBack {
 			System.out.println("2. Know Minimum Support Price");
 			System.out.println("3. Apply for License Renewal/Status");
 			System.out.println("4. FeedBack/Complaint");
-			System.out.println("5. Know your previous transcations");
-			System.out.println("6. Exit");
+			System.out.println("5. Exit");
 
 			int choice = Integer.parseInt(br.readLine());
 			ch = choice;
@@ -187,6 +181,10 @@ public class Farmer extends FeedBack {
 					// System.out.println("Invalid Input");
 					break;
 				}
+				break;
+
+			case 5:
+				break;
 
 			}
 		} while (ch != 6);

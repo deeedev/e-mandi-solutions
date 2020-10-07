@@ -96,19 +96,19 @@ public class CRUDOperationsWholeSeller implements Trade, License {
 			}
 			System.out.println("\nEnter your choice: ");
 			int c1 = sc.nextInt();
-			System.out.println(CRUDOperationCrops.getMapCropsMSP().size());
+
 			System.out.println("Crops MSP: " + CRUDOperationCrops.getMapCropsMSP().get(arr[c1 - 1]).getMsp()
 					+ "\nCrop Name: " + arr[c1 - 1]);
 			System.out.println();
-			System.out.println("Enter Buy Price");
+			System.out.println("Enter Buy Price(RS/KG)");
 			double bp = sc.nextDouble();
-			System.out.println("Enter Quantity: ");
+			System.out.println("Enter Quantity(KG): ");
 			double quantity = sc.nextDouble();
 
-			System.out.println("***** Buy Order Sent To Dashboard Successfully *****");
+			System.out.println("\nCrop Name: " + arr[c1 - 1] + "\nBuy Price: " + bp + " /KG" + "\nQuantity: " + quantity
+					+ " KG\n");
 
-			System.out.println("\nCrop Name: " + arr[c1 - 1] + "\nBuy Price: " + bp + "\nQuantity: " + quantity + "\n");
-
+			System.out.println("\n***** Buy Order Sent To Dashboard Successfully *****\n");
 			Crops crp = new Crops();
 
 			crp.setName(arr[c1 - 1]);
@@ -130,7 +130,8 @@ public class CRUDOperationsWholeSeller implements Trade, License {
 				i++;
 				System.out.println();
 			} else
-				System.out.println("No Sell Orders are placed by farmers");
+
+				System.out.println("\nNo Sell Orders are placed by farmers\n");
 			break;
 		default:
 			break;
@@ -168,7 +169,7 @@ public class CRUDOperationsWholeSeller implements Trade, License {
 
 		sellOrderWholeSeller.put(c2.getName(), c2);
 
-		System.out.println("***** Sell Order Sent To Dashboard Successfully *****");
+		System.out.println("\n***** Sell Order Sent To Dashboard Successfully *****\n");
 
 	}
 
@@ -177,13 +178,13 @@ public class CRUDOperationsWholeSeller implements Trade, License {
 
 		// TODO Auto-generated method stub
 		System.out.println("Enter your Name: ");
-		String name = sc.nextLine();
+		String name = sc.next();
 
 		System.out.println("Enter your phone number: ");
-		String phone = sc.nextLine();
+		String phone = sc.next();
 
 		System.out.println("Enter your License Number: ");
-		String ln = sc.nextLine();
+		String ln = sc.next();
 
 		if (mapWholeSeller.containsKey(ln)) {
 			WholeSeller ws = new WholeSeller();
